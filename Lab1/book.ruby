@@ -102,11 +102,19 @@ while true
     author = gets.chomp
     print "Enter the book isbn: "
     isbn = gets.chomp
-    obj.add_book(name, author, isbn)
+    if name.empty? || author.empty? || isbn.empty?
+      puts "inputs cannot be empty"
+    else
+      obj.add_book(name, author, isbn)
+    end    
   when "2"
     print "Enter the book isbn: "
     isbn = gets.chomp
-    obj.remove_book isbn
+    if isbn.empty?
+      puts "isbn cannot be empty"
+    else
+      obj.remove_book isbn
+    end
   when "3"
     obj.list_books
   when "4"
@@ -114,22 +122,36 @@ while true
   when "5"
     print "Enter the isbn the book: "
     value = gets.chomp
-    output = obj.search_by_isbn value
-    obj.print_book output
+    if value.empty?
+      puts "isbn cannot be empty"
+    else
+      output = obj.search_by_isbn value
+      obj.print_book output
+    end 
+   
   when "6"
     print "Enter the name of the book: "
     value = gets.chomp
-    books = obj.search_by_name value
-    books.each do |line|
-      obj.print_book line
-    end
+    if value.empty?
+      puts "name cannot be empty"
+    else
+      books = obj.search_by_name value
+      books.each do |line|
+        obj.print_book line
+      end
+    end 
+   
   when "7"
     print "Enter the author of the book: "
     value = gets.chomp
-    books = obj.search_by_author value
-    books.each do |line|
-      obj.print_book line
-    end
+    if value.empty?
+      puts "author cannot be empty"
+    else
+      books = obj.search_by_author value
+      books.each do |line|
+        obj.print_book line
+      end
+    end   
 
   when "8"
     break
