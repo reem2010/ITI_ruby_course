@@ -1,0 +1,12 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @article %>
+<%= image_tag @article.image.url if @article.image.present? %>
+
+<div>
+  <%= link_to "Edit this article", edit_article_path(@article) %> |
+  <%= link_to "Back to articles", articles_path %> |
+
+  <%= link_to "report this article", report_article_path(@article), data: {turbo_method: :put } %> 
+  <%= button_to "Destroy this article", @article, method: :delete %>
+</div>
